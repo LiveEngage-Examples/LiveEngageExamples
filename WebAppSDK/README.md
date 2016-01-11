@@ -5,6 +5,11 @@ The widget is built using Bootstrap, JQuery, and the Web App SDK.
 
 You can view a live example here:[Alias Widget](https://scottwestover.herokuapp.com/liveengageWidgets/aliasWidget/)
 
+# Chat Starting Page Widget
+This is an example widget of how you can use and Engagement Attribute to pass the chat starting page URL to a Google Spreadsheet and then use that data for a custom report.
+
+In order to use this widget, you will need to have a Google Account, that way you can host a spreadsheet on your Google Drive. Inside the Chat Starting Page Widget folder, you will see instructions on how to set this up.
+
 # Multi Media Widget
 This is an example of widget of how you can use the Web App SDK to send html code, send images, YouTube videos (sends an image of the video through chat that the visitor can click on to be taken to the YouTube video), and file sharing by using the Google Drive API.
 
