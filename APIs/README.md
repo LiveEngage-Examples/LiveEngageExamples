@@ -1,4 +1,7 @@
-# TranscriptSendEmailExample
+# Java - Engagement History API
+This is a basic example of how to connect to the Engagement History API in Java by using Scribe. In order to run the example you will need to update the EngagementHistory.java file with your Engagement History API credentials.
+
+# Java - Transcript Send Email Example
 This example uses the Engagement History API to access the chat transcripts for the previous day, parse the data, and then send out an individual email for each chat that occurred. The email contains all of the meta data tied to that chat and the chat transcript. 
 
 This example also uses the Skill API and the Agent API to get the skill name, the name of the agent, and the email of the agent, and then adds that data to the email.
