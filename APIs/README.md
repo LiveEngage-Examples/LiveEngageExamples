@@ -19,3 +19,6 @@ You will need to update the following files:
 
 # Python - Engagement History API Example
 This is a basic example of how to connect to the Engagement History API in Python by using the requests_oauthlib. In order to run this example you will need to update the ehapiExample.py file with your Engagement History API credentials.
+
+# R - Engagement History API Example
+This is a basic example of how to connect to the Engagement History API in R by using the httr library. In order to run this example you will need to update the rEngagementHistory.R file with your Engagement History API credentials.
