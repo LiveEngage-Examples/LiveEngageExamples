@@ -30,7 +30,7 @@ In order to use this widget you will need to have access to a Marketo instance. 
 You can view a live example here:[Marketo Create Lead Widget](https://powerful-ravine-2208.herokuapp.com)
 
 # Marketo Example Widget 2
-This is an example Node.js widget of how you can integrate with Marketo by using the prechat survey information from LiveEngage to create a lead in the lead database. This widget uses the Marketo Munchkin code and a xmlhttp POST to send the lead data to Marketo.
+This is an example widget of how you can integrate with Marketo by using the prechat survey information from LiveEngage to create a lead in the lead database. This widget uses the Marketo Munchkin code and a xmlhttp POST to send the lead data to Marketo.
 
 In order to use this widget you will need to update the demo.html file with your Marketo information.
 
