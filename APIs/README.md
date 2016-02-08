@@ -17,6 +17,9 @@ You will need to update the following files:
 * SkillList.java - with your Engagement History API credentials
 * IndividualChat.java  with your Engagement History API credentials
 
+# Node JS - Engagement History API Example
+This is a basic example of how to connect to the Engagement History API in Node.JS by using the request module. In order to run this example you will need to update the EHAPIExample.js file with your Engagement History API credentials.
+
 # Python - Engagement History API Example
 This is a basic example of how to connect to the Engagement History API in Python by using the requests_oauthlib. In order to run this example you will need to update the ehapiExample.py file with your Engagement History API credentials.
 
