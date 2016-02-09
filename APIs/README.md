@@ -1,3 +1,10 @@
+# Java - Engagement History API Program
+This is a runnable Jar file that will query the Engagement History API based on a keyword, and then send out an email for each of the chat transcripts that are returned. This program will automatically pull all of the chat transcripts for the previous day that contain the keyword you are seaching for.
+
+Example Use Case: I want to get an email with the chat transcript anytime someone answered Dissatisfied to my CSAT question. 
+
+To run this program, you will need to edit the config.properties file, and you will need to create a SendGrid account.
+
 # Java - Engagement History API
 This is a basic example of how to connect to the Engagement History API in Java by using Scribe. In order to run the example you will need to update the EngagementHistory.java file with your Engagement History API credentials.
 
