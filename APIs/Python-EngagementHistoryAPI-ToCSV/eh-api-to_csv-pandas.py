@@ -10,7 +10,6 @@ start_time_epoch = time.time()
 
 accountNum = 'xxxxxxxxx'
 domain = 'xxxxxxxx.liveperson.net'
-#                https://<domain>/interaction_history/api/account/{accountID}/interactions/search?<url_parameters>
 engHistoryURI = 'https://' + domain + '/interaction_history/api/account/' + accountNum + '/interactions/search?'
 
 # oauth stuff
@@ -28,58 +27,42 @@ oauth = OAuth1(consumer_key,
 client = requests.session()
 postheader = {'content-type': 'application/json'}
 
-# Customize the body for what you want 
-body={
-	'interactive':'true',
-	'ended':'true',
-	'start':{
-		# http://www.epochconverter.com/ - grab the millisecond version
-		'from':'1451606399000', #Dec 31 2015
-		'to':'1453334399000' #jan 15 2016
-	},
-	'skillIds': [
-		# Skill ID is found in the URL when you click on a skill in LiveEngage
-		12, 13, 14, # All English Sales 
-		15, 16, 17 # All English Service
-	]
-}
+# Construct our dataframe
+df_ = pandas.DataFrame(columns=["startTime", "endTime", "skillId", "agentId", "sdes", "transcriptLines"])
 
-# Fill our interactionRecords incrementally because can only pull 100 at a time.
-count = 1
-offset = 0
-interactionRecords = []
-while(offset <= count + 1):
+count = 1 # Count is the total num of records in the response
+offset = 0 # offset is to keep track of the amount difference between what we've pulled so far and what the total is.
+numRecords = 0
+while(offset <= count + 1): # Grab the data incrementally because can only pull 100 at a time.
+	
+	# Complete the Requests.session POST
 	params={'offset':offset, 'limit':'100', 'start':'des'} # Prob shouldn't change offset and limit 
 	engHistoryResponse = client.post(url=engHistoryURI, headers=postheader, data=json.dumps(body), auth=oauth, params=params)
-	# content.decode() converts Response to String
-	engHistoryDecoded = engHistoryResponse.content.decode()
-	# json.loads converts JSON String to Python Dictionary.
-	engHistoryResults = (json.loads(engHistoryDecoded))
-	# Update count, offset, and records
+	engHistoryDecoded = engHistoryResponse.content.decode() # content.decode() converts Response to String
+	engHistoryResults = (json.loads(engHistoryDecoded)) # json.loads converts JSON String to Python Dictionary.
+
+	# Fill our dataframe 
 	for record in engHistoryResults['interactionHistoryRecords']:
-		interactionRecords.append(record)
+		# Update numRecords
+		numRecords += 1
+		engagementId = record['info']['engagementId']
+		df_.set_value(engagementId, "startTime", record['info']['startTime'])
+		df_.set_value(engagementId, "endTime", record['info']['endTime'])
+		df_.set_value(engagementId, "skillId", record['info']['skillId'])
+		df_.set_value(engagementId, "agentId", record['info']['agentId'])
+		df_.set_value(engagementId, "transcriptLines", record['transcript']['lines'])
+		# This is a good way to grab a value that may not exist
+		try:
+			df_.set_value(engagementId, "sdes", record['sdes']['events'])
+		except KeyError:
+			df_.set_value(engagementId, "sdes", "N/A")
+	
+	# Update count, offset
 	count = engHistoryResults['_metadata']['count']
 	offset += 100 # Our limit is set to 100 in our query params 
-	# print the status of the aggregation
-	print(str(offset) + "<=" + str(count))
+	# print the status of the aggregation 
+	print(str(offset) + "<=" + str(count))	   
 
-# Construct our dataframe
-df_ = pandas.DataFrame(columns=["startTime", "endTime", "skillId", "agentId", "sdes", "transcriptLines"])			   
-
-numRecords = 0
-# Fill our dataframe 
-for record in interactionRecords:
-	numRecords += 1
-	engagementId = record['info']['engagementId']
-	df_.set_value(engagementId, "startTime", record['info']['startTime'])
-	df_.set_value(engagementId, "endTime", record['info']['endTime'])
-	df_.set_value(engagementId, "skillId", record['info']['skillId'])
-	df_.set_value(engagementId, "agentId", record['info']['agentId'])
-	df_.set_value(engagementId, "transcriptLines", record['transcript']['lines'])
-	try:
-		df_.set_value(engagementId, "sdes", record['sdes']['events'])
-	except KeyError:
-		df_.set_value(engagementId, "sdes", "N/A")
 print("num records processed = " + str(numRecords))
 
 #########################
@@ -89,10 +72,7 @@ print("num records processed = " + str(numRecords))
 outfile = 'new_test.csv'
 
 with open(outfile, 'w', encoding='utf-8') as f:
-	# We could write the date and timeframe to the header, or just put it in the table itself. I think putting it in the table may be the better choice.
-	#f.write('Date: ' + str(myDate) + '\nTimeframe: ' + myTime15Before + ' - ' + myTimeNow + '\n\n')
-	# Add dataframe to output file
-	df_.to_csv(f, sep='|', encoding='utf-8')
+    df_.to_csv(f, sep='|', encoding='utf-8')
 
 print("Output file: " + outfile)
 print("--- %s seconds to complete script." % (time.time() - start_time_epoch))
