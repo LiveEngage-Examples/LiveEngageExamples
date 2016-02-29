@@ -26,6 +26,21 @@ oauth = OAuth1(consumer_key,
 
 client = requests.session()
 postheader = {'content-type': 'application/json'}
+# Customize the body for what you want 
+body={
+	'interactive':'true',
+	'ended':'true',
+	'start':{
+		# http://www.epochconverter.com/ - grab the millisecond version
+		'from':'1451606399000', #Dec 31 2015
+		'to':'1453334399000' #jan 15 2016
+	},
+	'skillIds': [
+		# Skill ID is found in the URL when you click on a skill in LiveEngage
+		12, 13, 14, # All English Sales 
+		15, 16, 17 # All English Service
+	]
+}
 
 # Construct our dataframe
 df_ = pandas.DataFrame(columns=["startTime", "endTime", "skillId", "agentId", "sdes", "transcriptLines"])
