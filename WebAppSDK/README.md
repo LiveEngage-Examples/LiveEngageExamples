@@ -56,7 +56,7 @@ This is an example widget that shows how you can write chat lines to the agent c
 
 Note: This sample widget was not created by me. I am sharing the source code here since it is no longer available through the original link.
 
-You can view a live example here:[Multi-Media Widget](https://scottwestover.herokuapp.com/liveengageWidgets/SDKsampleWidget/)
+You can view a live example here:[Sample Widget](https://scottwestover.herokuapp.com/liveengageWidgets/SDKsampleWidget/)
 
 # Translate Widget
 This is an example widget of how you can have the chat lines translated to another language. The widget uses the Bing translator widget to translate the lines. 
