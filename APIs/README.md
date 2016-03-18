@@ -44,8 +44,6 @@ This is an example of how to connect to the Real Time Operational API in Python 
 
 ### Contribution 
 Thank you [WildYorkies](https://github.com/WildYorkies) for providing this example code.
->>>>>>> scottwestover/master
 
 # R - Engagement History API Example
 This is a basic example of how to connect to the Engagement History API in R by using the httr library. In order to run this example you will need to update the rEngagementHistory.R file with your Engagement History API credentials.
-
