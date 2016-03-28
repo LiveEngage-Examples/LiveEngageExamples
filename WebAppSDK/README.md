@@ -13,7 +13,15 @@ In order to use this widget, you will need to have a Google Account, that way yo
 # Knowledge Base Widget
 This is an example widget that shows how you can have a knowledge base of information that an agent can search through, and then send that content to a visitor. 
 
-You can view a live example here:[Knowledge Base Widget](http://scottwestover.herokuapp.com/liveengageWidgets/knowledgeBaseWidget/)
+You can view a live example here:[Knowledge Base Widget](https://scottwestover.herokuapp.com/liveengageWidgets/knowledgeBaseWidget/)
+
+# SC - Knowledge Base Widget 
+This is an example widget that was created for the SC team that shows how you can have a knowledge base of information that an agent can search through, and then send that content to a visitor. 
+
+You can view a live example here:[SC - Knowledge Base Widget](https://scottwestover.herokuapp.com/liveengageWidgets/knowledgeBaseWidgetv2/)
+
+### Contribution 
+Thank you Anthony Kunjbehari for providing the examples for this widget.
 
 #Lead Gen Send Email Widget
 This is an example Node.js widget that shows how you can get information from the pre-chat survey, information on the agent, and the chat transcript and have that data populate a form that you can then send to an email address. This widget uses SendGrid to send the emails.
