@@ -1,10 +1,10 @@
-<!-- Notes: I need to add in the ability to see if an agent has sent a chat line, and if they haven't then keep compiling the visitor's chat lines, that way they don't dissapear. -->
+<!-- Notes: If the visitor keeps sending chat lines, this widget will only translate one at a time -->
 <!DOCTYPE html>
 <html>
 
 <head>
     <title>Translate Widget Example</title>
-    <script type="text/javascript" charset="utf8" src="js/client-SDK.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://lpcdn.lpsnmedia.net/webagent/client-SDK.min.js"></script>
     <link rel="stylesheet" href="css/bootstrap-slate.min.css">
     <link rel="stylesheet" href="css/example2.css">
     <script src="js/jquery.min.js"></script>
@@ -32,12 +32,14 @@
 </head>
 
 <body>
+    <!-- Start of Container -->
     <div class="container">
         <div class="row row-centered">
             <div class="col-md-12 page-header">
                 <h1 translate="no">Translate Chat</h1>
             </div>
         </div>
+        <!-- Visitor Chat Area -->
         <div class="row row-centered">
             <div class="col-md-4 col-centered"></div>
             <div class="col-md-4 col-centered">
@@ -52,6 +54,8 @@
             <div class="col-md-4 col-centered"></div>
         </div>
         <br />
+        <!-- End of Visitor Chat Area -->
+        <!-- Start of Agent Chat Area -->
         <div class="row row-centered">
             <div class="col-md-4 col-centered"></div>
             <div class="col-md-4 col-centered">
@@ -66,7 +70,9 @@
             </div>
             <div class="col-md-4 col-centered"></div>
         </div>
+        <!-- Start of Agent Chat Area -->
     </div>
+    <!-- End of Container -->
     <script>
         var skill;
         var SDK = lpTag.agentSDK;
@@ -93,7 +99,8 @@
             if (data.newValue.lines[0].source == 'visitor') {
                 //update the hidden div with the visitors chat line
                 document.getElementById('visitorChat2').innerHTML = chatLine;
-                //translate the visitors chat line
+                //translate the visitors chat line based on skill group
+                
                 if (skill == "Spanish") {
                     Microsoft.Translator.Widget.Translate('es', 'en', onProgress, onError, onComplete2, onRestoreOriginal);
                 } else if (skill == "Russian") {

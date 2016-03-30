@@ -6,9 +6,14 @@ The widget is built using Bootstrap, JQuery, and the Web App SDK.
 You can view a live example here:[Alias Widget](https://scottwestover.herokuapp.com/liveengageWidgets/aliasWidget/)
 
 # Chat Starting Page Widget
-This is an example widget of how you can use and Engagement Attribute to pass the chat starting page URL to a Google Spreadsheet and then use that data for a custom report.
+This is an example widget of how you can use an Engagement Attribute to pass the chat starting page URL to a Google Spreadsheet and then use that data for a custom report.
 
 In order to use this widget, you will need to have a Google Account, that way you can host a spreadsheet on your Google Drive. Inside the Chat Starting Page Widget folder, you will see instructions on how to set this up.
+
+# HTML Table Widget
+This is an example widget of how you can send HTML tables through chat, and style them by using on page CSS. By using the on page CSS, it allows for the client to customize the look of the tables and have them match the branding of their chat window.
+
+You can view a live example here:[HTML Table Widget](https://scottwestover.herokuapp.com/liveengageWidgets/JCrewWidget/)
 
 # Knowledge Base Widget
 This is an example widget that shows how you can have a knowledge base of information that an agent can search through, and then send that content to a visitor. 
