@@ -57,6 +57,13 @@ To use the widget, you will need to update the example3.js file with your Google
 
 You can view a live example here:[Multi-Media Widget](https://scottwestover.herokuapp.com/liveengageWidgets/MultiMediaWidget/)
 
+# Photo Sharing Widget
+This is an example of widget of how you can use the Web App SDK to send Images through chat, and how you can allow visitors to upload photos and have the agents view them. The widget allows for you to send a form to the visitor to allow them to upload the image, and once the photo is uploaded the widget will display the image. This widget was built using the Google Drive API.
+
+To use the widget, you will need to update the example3.js and index.html files with your Google Drive API client Id. You can read more about the setting up the Drive API here: [Drive API](https://developers.google.com/drive/v2/web/quickstart/js)
+
+You can view a live example here:[Photo Sharing Widget](https://scottwestover.herokuapp.com/liveengageWidgets/photoSharingWidget/)
+
 # Sample CRM Widget
 This is an example Node.js widget that uses the pre chat survey information to see if a lead exists in a database, and then displays that leads information. This widget uses the mongodb that is available from mongolab.
 
