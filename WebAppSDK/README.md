@@ -10,6 +10,13 @@ This is an example widget of how you can use an Engagement Attribute to pass the
 
 In order to use this widget, you will need to have a Google Account, that way you can host a spreadsheet on your Google Drive. Inside the Chat Starting Page Widget folder, you will see instructions on how to set this up.
 
+# File Sharing Widget
+This is an example of widget of how you can use the Web App SDK to send Files through chat, and how you can allow visitors to upload files and have the agents view them. The widget allows for you to send a form to the visitor to allow them to upload the file, and once the file is uploaded the widget will display a link to the file. This widget was built using the Google Drive API.
+
+To use the widget, you will need to update the example3.js and index.html files with your Google Drive API client Id. You can read more about the setting up the Drive API here: [Drive API](https://developers.google.com/drive/v2/web/quickstart/js)
+
+You can view a live example here:[File Sharing Widget](https://scottwestover.herokuapp.com/liveengageWidgets/fileSharingWidget/)
+
 # HTML Table Widget
 This is an example widget of how you can send HTML tables through chat, and style them by using on page CSS. By using the on page CSS, it allows for the client to customize the look of the tables and have them match the branding of their chat window.
 
