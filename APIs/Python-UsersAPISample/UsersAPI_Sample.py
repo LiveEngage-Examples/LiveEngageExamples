@@ -37,14 +37,14 @@ oauth = OAuth1(app_key,
 
 # Get a list of all the users
 # Example URL: https://va-a.ac.liveperson.net/api/account/56072331/configuration/le-users/users?v=1
-url = 'https://'+baseURI+'/api/account/'+account_number+'/configuration/le-users/users'
+url = 'https://'+baseURI+'/api/account/'+account_number+'/configuration/le-users/users?v=1'
 response = client.get(url=url, headers=postheader, auth=oauth)
 results = json.loads(response.content.decode())
 print(results)
 
 # Get all of the information for a single user
 # Example URL: https://va-a.ac.liveperson.net/api/account/56072331/configuration/le-users/users/597110910?v=1
-url = 'https://'+baseURI+'/api/account/'+account_number+'/configuration/le-users/users/{YOUR USER ID}'
+url = 'https://'+baseURI+'/api/account/'+account_number+'/configuration/le-users/users/{YOUR USER ID}?v=1'
 response = client.get(url=url, headers=postheader, auth=oauth)
 results = json.loads(response.content.decode())
 print(results)

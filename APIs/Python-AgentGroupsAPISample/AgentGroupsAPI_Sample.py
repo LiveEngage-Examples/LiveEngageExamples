@@ -35,20 +35,19 @@ oauth = OAuth1(app_key,
 			   signature_method='HMAC-SHA1',
 			   signature_type='auth_header')
 
-# Get a list of all the skills
-# Example URL: https://va-a.ac.liveperson.net/api/account/56072331/configuration/le-users/skills?v=1
-url = 'https://'+baseURI+'/api/account/'+account_number+'/configuration/le-users/skills?v=1'
+# Get a list of all the agent groups
+# Example URL: https://va-a.ac.liveperson.net/api/account/56072331/configuration/le-users/agentGroups?v=1
+url = 'https://'+baseURI+'/api/account/'+account_number+'/configuration/le-users/agentGroups?v=1'
 response = client.get(url=url, headers=postheader, auth=oauth)
 results = json.loads(response.content.decode())
 print(results)
 
-# Get all of the information for a single skill
-# Example URL: https://va-a.ac.liveperson.net/api/account/56072331/configuration/le-users/skills/2?v=1
-url = 'https://'+baseURI+'/api/account/'+account_number+'/configuration/le-users/skills/{SKILL ID}?v=1'
+# Get all of the information for a single agent group
+# Example URL: https://va-a.ac.liveperson.net/api/account/56072331/configuration/le-users/agentGroups/249441810?v=1
+url = 'https://'+baseURI+'/api/account/'+account_number+'/configuration/le-users/agentGroups/{AGENT GROUPD ID}?v=1'
 response = client.get(url=url, headers=postheader, auth=oauth)
 results = json.loads(response.content.decode())
 print(results)
-
 
 
 
