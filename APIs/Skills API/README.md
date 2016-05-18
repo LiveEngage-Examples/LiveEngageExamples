@@ -1,0 +1,2 @@
+# Python - Skills API Sample
+This is a basic example of how to connect to the Skills API in Python by using the requests_oauthlib. The example shows how you can get all of the skills that are on your account, and how to get more information for a single skill by using their id. In order to run this example you will need to update the SkillsAPI_Sample.py file with your Agent Groups API credentials.
