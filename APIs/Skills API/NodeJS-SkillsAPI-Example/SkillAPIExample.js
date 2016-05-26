@@ -18,10 +18,10 @@
 var request = require('request');
 
 var oauth = {
-        consumer_key: '530abebef7814b23bc314d9abe511465',
-        consumer_secret: '3b48e7f644017990',
-        token: 'bb52851835ad4e7ca70251c30afc696e',
-        token_secret: '746275fd0cf02e1e'
+        consumer_key: 'your app key',
+        consumer_secret: 'your app secret',
+        token: 'your access token',
+        token_secret: 'your access token secret'
     };
 
 // Get a list of all the skills
