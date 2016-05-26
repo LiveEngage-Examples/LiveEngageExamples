@@ -44,7 +44,7 @@ print(results)
 
 # Get all of the information for a single agent group
 # Example URL: https://va-a.ac.liveperson.net/api/account/56072331/configuration/le-users/agentGroups/249441810?v=1
-url = 'https://'+baseURI+'/api/account/'+account_number+'/configuration/le-users/agentGroups/{AGENT GROUPD ID}?v=1'
+url = 'https://'+baseURI+'/api/account/'+account_number+'/configuration/le-users/agentGroups/{AGENT GROUP ID}?v=1'
 response = client.get(url=url, headers=postheader, auth=oauth)
 results = json.loads(response.content.decode())
 print(results)
