@@ -17,8 +17,15 @@ To use the widget, you will need to update the example3.js and index.html files 
 
 You can view a live example here:[File Sharing Widget](https://scottwestover.herokuapp.com/liveengageWidgets/fileSharingWidget/)
 
+# HTML Table Editor Widget
+This is an example widget that allows for agent to create, edit, or paste data in a table format, and then send that table through chat. Also, by using the on page CSS, it allows for the client to customize the look of the tables and have them match the branding of their chat window.
+
+You can view a live example here:[HTML Table Editor Widget](https://scottwestover.herokuapp.com/test/ckeditor/jcrew/)
+
 # HTML Table Widget
 This is an example widget of how you can send HTML tables through chat, and style them by using on page CSS. By using the on page CSS, it allows for the client to customize the look of the tables and have them match the branding of their chat window.
+
+This widget makes uses the CKEditor (http://ckeditor.com/) web text editor.
 
 You can view a live example here:[HTML Table Widget](https://scottwestover.herokuapp.com/liveengageWidgets/JCrewWidget/)
 
