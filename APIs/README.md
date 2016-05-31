@@ -16,7 +16,7 @@ This is a basic example of how to connect to the Engagement History API in Java 
 
 # Real Time Operational API 
 
-This folder contains examples for connecting to the Real Time Operational API. Curerntly there are examples for: Python. You can find more information about these examples in the README.md file inside this folder.
+This folder contains examples for connecting to the Real Time Operational API. Curerntly there are examples for: Python and NodeJS. You can find more information about these examples in the README.md file inside this folder.
 
 # Skills API 
 
