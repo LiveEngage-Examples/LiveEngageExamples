@@ -29,6 +29,8 @@ app.get('/', function(request, response) {
 app.post('/token', function(request, response) {
 	// generate our token with the appropiate information and sign it with our private RSA key.
 	var token = jwt.sign({ "iss": "https://enigmatic-shelf-93460.herokuapp.com/","sub": "4255551212" }, cert_priv, { algorithm: 'RS256', expiresIn: '1h'});
+    // Another token example. This one shows how you can pass additional Engagement Attributes to LiveEngage.
+    //var token = jwt.sign({ "iss": "https://enigmatic-shelf-93460.herokuapp.com/","sub": "4255551212","preferred_username" : "JohnDoe", "phone_number" : "+1-10-344-3765333" }, cert_priv, { algorithm: 'RS256', expiresIn: '1h'});
     console.log(token);
     // verify that the token was generated correctly
     jwt.verify(token, cert_pub, function(err, decoded) {
