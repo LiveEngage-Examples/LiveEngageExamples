@@ -31,6 +31,42 @@ app.post('/token', function(request, response) {
 	var token = jwt.sign({ "iss": "https://enigmatic-shelf-93460.herokuapp.com/","sub": "4255551212" }, cert_priv, { algorithm: 'RS256', expiresIn: '1h'});
     // Another token example. This one shows how you can pass additional Engagement Attributes to LiveEngage.
     //var token = jwt.sign({ "iss": "https://enigmatic-shelf-93460.herokuapp.com/","sub": "4255551212","preferred_username" : "JohnDoe", "phone_number" : "+1-10-344-3765333" }, cert_priv, { algorithm: 'RS256', expiresIn: '1h'});
+    // Here is another example of how you can pass more information using the customer info engagement attribute.
+    /*
+    	var token = jwt.sign({ 
+        "iss": "https://enigmatic-shelf-93460.herokuapp.com/",
+        "sub": "4255551212",
+        "preferred_username" : "JohnDoe", 
+        "phone_number" : "+1-10-344-3765333",
+        "lp_sdes":[
+        {
+         "type":"ctmrinfo",
+         "info":{
+             "cstatus":"cancelled",
+             "ctype":"vip",
+             "customerId":"138766AC",
+             "balance":-400.99,
+             "socialId":"11256324780",
+             "imei":"3543546543545688",
+             "userName":"user000",
+             "companySize":500,
+             "accountName":"bank corp",
+             "role":"broker",
+             "lastPaymentDate":{
+                 "day":15,
+                 "month":10,
+                 "year":2014
+             },
+             "registrationDate":{
+                 "day":23,
+                 "month":5,
+                 "year":2013
+             }
+         }
+     }
+    ]
+}, cert_priv, { algorithm: 'RS256', expiresIn: '1h'});
+*/
     console.log(token);
     // verify that the token was generated correctly
     jwt.verify(token, cert_pub, function(err, decoded) {
