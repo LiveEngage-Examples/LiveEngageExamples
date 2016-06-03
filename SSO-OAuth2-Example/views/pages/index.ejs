@@ -13,9 +13,12 @@
   <div id="LP_DIV_1446650188048"></div>
   <script>
     function test(callback) {
-      /* Add code to verify that your user is logged in here */
+      /* 
+        Add code to verify that your user is logged in here...
+        If the user is logged in and verified then get the OpenID Connect Token
+      */
       // Query the token endoint to get the OpenID Connect Token
-      $.post( "/token", function( data ) {
+      $.post( "/getToken", function( data ) {
         console.log(data);
         //if successful
         if(data.Fail != "undefined" && data.Fail != "404"){
