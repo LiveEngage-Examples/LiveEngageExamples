@@ -4,7 +4,7 @@ This folder contains examples for connecting to the Agent Groups API. Curerntly 
 
 # Engagement History API 
 
-This folder contains examples for connecting to the Engagement History API. Curerntly there are examples for: Java, NodeJS, Python, and R. You can find more information about these examples in the README.md file inside this folder.
+This folder contains examples for connecting to the Engagement History API. Curerntly there are examples for: C#, Java, NodeJS, Python, and R. You can find more information about these examples in the README.md file inside this folder.
 
 # External Engagements API 
 

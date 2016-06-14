@@ -1,3 +1,6 @@
+# C# - Engagement History API Example
+This is a basic example of how to connect to the Engagement History API in C# by using a 3rd party OAuth Class from http://cropperplugins.codeplex.com/SourceControl/latest#Cropper.Plugins/OAuth1.0/OAuth.cs. In order to run this example you will need to update the EngagementHistoryAPI.cs file with your Engagement History API credentials.
+
 # Java - Engagement History API Program
 This is a runnable Jar file that will query the Engagement History API based on a keyword, and then send out an email for each of the chat transcripts that are returned. This program will automatically pull all of the chat transcripts for the previous day that contain the keyword you are seaching for.
 
