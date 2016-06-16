@@ -1,5 +1,4 @@
 import requests
-import json
 from requests_oauthlib import OAuth1
 from requests_oauthlib import OAuth1Session
 import time
@@ -22,7 +21,7 @@ accountNumber = '12345678'
 agentActivityURI = 'https://va.data.liveperson.net/operations/api/account/' + accountNumber + '/agentactivity?timeframe=' + dataTimeframe + '&skillIds=all&agentIds=all&v=1'
 engActivityURI = 'https://va.data.liveperson.net/operations/api/account/' + accountNumber + '/engactivity?timeframe=' + dataTimeframe + '&v=1&skillIds=all&agentIds=all'
 queueHealthURI = 'https://va.data.liveperson.net/operations/api/account/' + accountNumber + '/queuehealth?timeframe=' + dataTimeframe + '&v=1&skillIds=all'
-skillURI = 'https://base.liveperson.net/api/account/' + accountNumber + '/skills?v=1'
+skillURI = 'https://z1.acr.liveperson.net/api/account/' + accountNumber + '/configuration/le-users/skills'
 
 consumer_key = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 consumer_secret = 'xxxxxxxxxxxxxxxx'
@@ -37,16 +36,10 @@ oauth = OAuth1(consumer_key,
 			   resource_owner_secret=access_token_secret,
 			   signature_method='HMAC-SHA1',
 			   signature_type='auth_header')
-agentActivityResponse = client.get(url=agentActivityURI, headers=postheader, auth=oauth)
-engActivityResponse = client.get(url=engActivityURI, headers=postheader, auth=oauth)
-queueHealthResponse = client.get(url=queueHealthURI, headers=postheader, auth=oauth)
-skillResponse = client.get(url=skillURI, headers=postheader, auth=oauth)
-
-# content.decode() converts Response to String. json.loads converts JSON String to Python Dictionary.
-agentActivityResults = json.loads(agentActivityResponse.content.decode())
-engActivityResults = json.loads(engActivityResponse.content.decode())
-queueHealthResults = json.loads(queueHealthResponse.content.decode())
-skillResults = json.loads(skillResponse.content.decode())
+agentActivityResults = client.get(url=agentActivityURI, headers=postheader, auth=oauth).json()
+engActivityResults = client.get(url=engActivityURI, headers=postheader, auth=oauth).json()
+queueHealthResults = client.get(url=queueHealthURI, headers=postheader, auth=oauth).json()
+skillResults = client.get(url=skillURI, headers=postheader, auth=oauth).json()
 
 # gather date and time
 myDate = datetime.date.today()
@@ -77,7 +70,7 @@ if skillIDs:
 	# Match skill ID to skill name. Input the skill name in our dataframe.
 	for skillData in skillResults['Skill']:
 		for skill in skillIDs:
-			if skillData['id'] == skill:
+			if str(skillData['id']) == skill:
 				df_.set_value(skill, "skill_name", skillData['name'])
 
 	# Insert our date and time info into the dataframe using our start_time_epoch
@@ -154,11 +147,10 @@ else:
 #########################
 
 # Construct our output file name
-outfile = 'new_test.csv'
+timestr = time.strftime("%Y%m%d-%H%M%S")
+outfile = 'LiveEngage_RT_output_' + timestr + '.csv'
 
 with open(outfile, 'w') as f:
-	# We could write the date and timeframe to the header, or just put it in the table itself. I think putting it in the table may be the better choice.
-	#f.write('Date: ' + str(myDate) + '\nTimeframe: ' + myTime15Before + ' - ' + myTimeNow + '\n\n')
 	# Add dataframe to output file
 	df_.to_csv(f)
 
