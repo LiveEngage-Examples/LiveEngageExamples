@@ -3,3 +3,5 @@ This is a basic example of how to connect to the External Engagements API in Pyt
 
 ### Contribution 
 Thank you [Matt Coles](https://github.com/MattJColes) for providing this example code.
+
+This example works with Python 3.5. 

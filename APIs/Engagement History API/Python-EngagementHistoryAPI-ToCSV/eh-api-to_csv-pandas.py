@@ -5,6 +5,8 @@ from requests_oauthlib import OAuth1Session
 import time
 import pandas
 
+# This code was built using Python 3.5
+
 # Grab the time when the script starts.
 start_time_epoch = time.time()
 

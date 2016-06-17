@@ -4,6 +4,8 @@ from requests_oauthlib import OAuth1
 from requests_oauthlib import OAuth1Session
 import time
 
+# This code was built using Python 3.5
+
 start_time = time.time()
 
 baseURI = 'https://{YOUR BASE URI}/interaction_history/api/account/{YOUR ACCOUNT NUMBER}/interactions/search?offset=0&limit=10'
@@ -24,6 +26,10 @@ oauth = OAuth1(consumer_key,
 			   signature_type='auth_header')
 response = client.post(url=baseURI, headers=postheader, data=json.dumps(body), auth=oauth, params=params)
 results = json.loads(response.content.decode())
+
+# For older versions of python you might need to use this line
+#results = json.loads(response.content.decode('utf-8'))
+
 outfile = 'test.txt'
 #headers
 header = ["stime", "etime", "dur", "vID", "eID", "inter", "agent", "skill", "chan", "startR", "endR"]

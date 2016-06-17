@@ -3,3 +3,5 @@ This is a basic example of how to connect to the Agent Groups API in NodeJS by u
 
 # Python - Agent Groups API Sample
 This is a basic example of how to connect to the Agent Groups API in Python by using the requests_oauthlib library. The example shows how you can get all of the agent groups that are on your account, and how to get more information for a single agent group by using its id. In order to run this example you will need to update the AgentGroupsAPI_Sample.py file with your Agent Groups API credentials.
+
+This example works with Python 3.5. 

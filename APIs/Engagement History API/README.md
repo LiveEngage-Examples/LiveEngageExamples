@@ -30,11 +30,15 @@ This is a basic example of how to connect to the Engagement History API in Node.
 # Python - Engagement History API Example
 This is a basic example of how to connect to the Engagement History API in Python by using the requests_oauthlib. In order to run this example you will need to update the ehapiExample.py file with your Engagement History API credentials.
 
+This example works with Python 3.5. 
+
 # Python - Engagement History API To CSV
 This is an example of how to connect to the Engagement History API in Python by using the requests_oauthlib, and then how to create a CSV file with the data that is returned from the API by using Pandas. In order to run this example you will need to update the eh-api-to_csv-pandas.py file with your Engagement History API credentials.
 
 ### Contribution 
 Thank you [WildYorkies](https://github.com/WildYorkies) for providing this example code.
+
+This example works with Python 3.5. 
 
 # R - Engagement History API Example
 This is a basic example of how to connect to the Engagement History API in R by using the httr library. In order to run this example you will need to update the rEngagementHistory.R file with your Engagement History API credentials.
