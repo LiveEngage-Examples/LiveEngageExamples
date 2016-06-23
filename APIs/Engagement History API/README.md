@@ -8,8 +8,15 @@ Example Use Case: I want to get an email with the chat transcript anytime someon
 
 To run this program, you will need to edit the config.properties file, and you will need to create a SendGrid account.
 
+# Java - Engagement History API to Text File
+This example uses the Engagement History API to access the chat transcripts for the previous day, parses the data, and then saves the information to a text file.
+
+This example uses the Scribe library. 
+
+To run this example, you will need to updaet the Main.java file with your API keys.
+
 # Java - Transcript Send Email Example
-This example uses the Engagement History API to access the chat transcripts for the previous day, parse the data, and then send out an individual email for each chat that occurred. The email contains all of the meta data tied to that chat and the chat transcript. 
+This example uses the Engagement History API to access the chat transcripts for the previous day, parses the data, and then send out an individual email for each chat that occurred. The email contains all of the meta data tied to that chat and the chat transcript. 
 
 This example also uses the Skill API and the Agent API to get the skill name, the name of the agent, and the email of the agent, and then adds that data to the email.
 
