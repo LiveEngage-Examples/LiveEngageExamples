@@ -1,34 +1,27 @@
-# Java - Engagement History API Program
-This is a runnable Jar file that will query the Engagement History API based on a keyword, and then send out an email for each of the chat transcripts that are returned. This program will automatically pull all of the chat transcripts for the previous day that contain the keyword you are seaching for.
+# Agent Groups API
 
-Example Use Case: I want to get an email with the chat transcript anytime someone answered Dissatisfied to my CSAT question. 
+This folder contains examples for connecting to the Agent Groups API. Curerntly there are examples for: Python 3.5 and NodeJS. You can find more information about these examples in the README.md file inside this folder.
 
-To run this program, you will need to edit the config.properties file, and you will need to create a SendGrid account.
+# Engagement History API 
 
-# Java - Engagement History API
+This folder contains examples for connecting to the Engagement History API. Curerntly there are examples for: C#, Java, NodeJS, Python 3.5, and R. You can find more information about these examples in the README.md file inside this folder.
+
+# External Engagements API 
+
+This folder contains examples for connecting to the External Engagements API. Curerntly there are examples for: Python 3.5. You can find more information about these examples in the README.md file inside this folder.
+
+# Java Engagement History API
+
 This is a basic example of how to connect to the Engagement History API in Java by using Scribe. In order to run the example you will need to update the EngagementHistory.java file with your Engagement History API credentials.
 
-# Java - Transcript Send Email Example
-This example uses the Engagement History API to access the chat transcripts for the previous day, parse the data, and then send out an individual email for each chat that occurred. The email contains all of the meta data tied to that chat and the chat transcript. 
+# Real Time Operational API 
 
-This example also uses the Skill API and the Agent API to get the skill name, the name of the agent, and the email of the agent, and then adds that data to the email.
+This folder contains examples for connecting to the Real Time Operational API. Curerntly there are examples for: Python 3.5 and NodeJS. You can find more information about these examples in the README.md file inside this folder.
 
-To send the email, this example uses a Gmail account to send out the emails.
+# Skills API 
 
-### Run The Example
-In order to run the example, you will need to have a Gmail account that you can use for sending out the emails, and you will need to have API keys for the Engagement History API. 
+This folder contains examples for connecting to the Skills API. Curerntly there are examples in: Python 3.5 and NodeJS. You can find more information about these examples in the README.md file inside this folder.
 
-You will need to update the following files:
-* SendEmailSingleChat.java - with your Gmail credentials
-* AgentList.java - with your Engagement History API credentials
-* SkillList.java - with your Engagement History API credentials
-* IndividualChat.java  with your Engagement History API credentials
+# Users API 
 
-# Node JS - Engagement History API Example
-This is a basic example of how to connect to the Engagement History API in Node.JS by using the request module. In order to run this example you will need to update the EHAPIExample.js file with your Engagement History API credentials.
-
-# Python - Engagement History API Example
-This is a basic example of how to connect to the Engagement History API in Python by using the requests_oauthlib. In order to run this example you will need to update the ehapiExample.py file with your Engagement History API credentials.
-
-# R - Engagement History API Example
-This is a basic example of how to connect to the Engagement History API in R by using the httr library. In order to run this example you will need to update the rEngagementHistory.R file with your Engagement History API credentials.
+This folder contains examples for connecting to the Users API. Curerntly there are examples in: Python 3.5 and NodeJS. You can find more information about these examples in the README.md file inside this folder.
