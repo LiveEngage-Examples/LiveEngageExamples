@@ -23,4 +23,5 @@ Once the information is parsed, you can copy the information from the window and
 
 ## Author
 Joshua Espinosa
+
 Email: jespinosa@liveperson.com
