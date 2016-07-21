@@ -92,12 +92,12 @@ Note: This sample widget was not created by me. I am sharing the source code her
 
 You can view a live example here:[Sample Widget](https://scottwestover.herokuapp.com/liveengageWidgets/SDKsampleWidget/)
 
-# TR - Tiered Responses Widget 
+# Tiered Responses Widget 
 This is an example widget that was created for a client that shows how you can have a knowledge base of tiered information that an agent can search through and then send that content to a visitor.
 
 This widget uses the CollapsibleLists JS library.
 
-You can view a live example here:[TR - Tiered Responses Widget](https://tiered-responses-widget.herokuapp.com/index.html)
+You can view a live example here:[Tiered Responses Widget](https://tiered-responses-widget.herokuapp.com/index.html)
 
 ### Contribution 
 Thank you Josh Espinosa for creating this widget example.
