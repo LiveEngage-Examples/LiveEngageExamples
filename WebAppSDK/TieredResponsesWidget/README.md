@@ -1,4 +1,4 @@
-# TR - Tiered Responses Widget 
+# Tiered Responses Widget 
 This is an example widget that was created for a client that shows how you can have a knowledge base of tiered information that an agent can search through and then send that content to a visitor.
 
 This widget uses the CollapsibleLists JS library.
