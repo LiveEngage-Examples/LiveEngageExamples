@@ -106,7 +106,7 @@ app.post('/token', function(request, response) {
     // validate that the client id and the client secret are correct
     if((username == 'clientid') && (password == 'clientsecret')) { 
             // validate the authorization code, and if it is successful send the OpenID Connect Token, otherwise send an error.
-            if(request.body.code = "secretcode"){
+            if(request.body.code == "secretcode"){
             // generate our token with the appropiate information and sign it with our private RSA key.
             var token = jwt.sign({ 
                 "iss": "https://enigmatic-shelf-93460.herokuapp.com/",
@@ -171,6 +171,19 @@ app.post('/token', function(request, response) {
             "error": "Couldn't validate the client id and secret"
         });
     }
+});
+
+// used for the pop out chat window
+app.get('/authorize', function(request, response) {
+    // add code to validate that the client id is correct 
+    /* 
+        Add code to verify that your user is logged in here...
+        If the user is logged in and verified then create the authorization code and supply it in the redirect
+    */
+    // Create the authorization code and supply it to the redirect
+    var authorization_code = "secretcode";
+    // for the redirect, you need to use the redirect_uri from the request and append the authorization code to the url
+    response.redirect(request.query.redirect_uri+"&code="+authorization_code);
 });
 
 app.listen(app.get('port'), function() {
