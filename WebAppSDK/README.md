@@ -92,6 +92,16 @@ Note: This sample widget was not created by me. I am sharing the source code her
 
 You can view a live example here:[Sample Widget](https://scottwestover.herokuapp.com/liveengageWidgets/SDKsampleWidget/)
 
+# Tiered Responses Widget 
+This is an example widget that was created for a client that shows how you can have a knowledge base of tiered information that an agent can search through and then send that content to a visitor.
+
+This widget uses the CollapsibleLists JS library.
+
+You can view a live example here:[Tiered Responses Widget](https://tiered-responses-widget.herokuapp.com/index.html)
+
+### Contribution 
+Thank you Josh Espinosa for creating this widget example.
+
 # Translate Widget
 This is an example widget of how you can have the chat lines translated to another language. The widget uses the Bing translator widget to translate the lines. 
 

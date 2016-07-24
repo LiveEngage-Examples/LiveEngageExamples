@@ -4,8 +4,8 @@ This is an example of how to implement the SSO OAuth 2.0 implicit flow and code 
 
 The example does not verify if the user is logged in, use the same authentication code for everyone, and should not be implemented as is. It is only meant to show how to generate the Token using the two flows.
 
-You can see a live example of the NodeJS app here: https://enigmatic-shelf-93460.herokuapp.com/
-If you would like to see a live example of the code flow please visit this URL: https://enigmatic-shelf-93460.herokuapp.com/codeflow
+You can see a live example of the NodeJS app here: <a href="https://enigmatic-shelf-93460.herokuapp.com/" target="_blank">https://enigmatic-shelf-93460.herokuapp.com/</a>
+If you would like to see a live example of the code flow please visit this URL: <a href="https://enigmatic-shelf-93460.herokuapp.com/codeflow" target="_blank">https://enigmatic-shelf-93460.herokuapp.com/codeflow</a>
 
 ##  Run the example
 
