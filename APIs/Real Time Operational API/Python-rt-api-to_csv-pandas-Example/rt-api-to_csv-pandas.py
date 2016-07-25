@@ -17,15 +17,15 @@ start_time_epoch = time.time()
 # Timeframe for the Real Time API's is 15 minutes
 dataTimeframe = '15'
 
-# Client's account number
+# LiveEngage account number
 accountNumber = 'xxxx'
 
+# Get these from the LiveEngage API management area
 consumer_key = 'xxxxxx'
 consumer_secret = 'xxx'
 access_token = 'xxxxxx'
 access_token_secret = 'xxx'
 
-#client = requests.session()
 postheader = {'content-type': 'application/json'}
 oauth = OAuth1(consumer_key,
 			   client_secret=consumer_secret,
