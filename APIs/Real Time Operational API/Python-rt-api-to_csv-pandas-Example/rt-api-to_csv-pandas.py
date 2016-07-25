@@ -1,6 +1,8 @@
+# written by https://github.com/WildYorkies
+# python=3.5
+
 import requests
 from requests_oauthlib import OAuth1
-from requests_oauthlib import OAuth1Session
 import time
 import datetime
 import pandas
@@ -16,19 +18,14 @@ start_time_epoch = time.time()
 dataTimeframe = '15'
 
 # Client's account number
-accountNumber = '12345678'
+accountNumber = 'xxxx'
 
-agentActivityURI = 'https://va.data.liveperson.net/operations/api/account/' + accountNumber + '/agentactivity?timeframe=' + dataTimeframe + '&skillIds=all&agentIds=all&v=1'
-engActivityURI = 'https://va.data.liveperson.net/operations/api/account/' + accountNumber + '/engactivity?timeframe=' + dataTimeframe + '&v=1&skillIds=all&agentIds=all'
-queueHealthURI = 'https://va.data.liveperson.net/operations/api/account/' + accountNumber + '/queuehealth?timeframe=' + dataTimeframe + '&v=1&skillIds=all'
-skillURI = 'https://z1.acr.liveperson.net/api/account/' + accountNumber + '/configuration/le-users/skills'
+consumer_key = 'xxxxxx'
+consumer_secret = 'xxx'
+access_token = 'xxxxxx'
+access_token_secret = 'xxx'
 
-consumer_key = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-consumer_secret = 'xxxxxxxxxxxxxxxx'
-access_token = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
-access_token_secret = 'xxxxxxxxxxxxxxxx'
-
-client = requests.session()
+#client = requests.session()
 postheader = {'content-type': 'application/json'}
 oauth = OAuth1(consumer_key,
 			   client_secret=consumer_secret,
@@ -36,10 +33,27 @@ oauth = OAuth1(consumer_key,
 			   resource_owner_secret=access_token_secret,
 			   signature_method='HMAC-SHA1',
 			   signature_type='auth_header')
-agentActivityResults = client.get(url=agentActivityURI, headers=postheader, auth=oauth).json()
-engActivityResults = client.get(url=engActivityURI, headers=postheader, auth=oauth).json()
-queueHealthResults = client.get(url=queueHealthURI, headers=postheader, auth=oauth).json()
-skillResults = client.get(url=skillURI, headers=postheader, auth=oauth).json()
+
+# Get the BASE URIs for all of your APIs
+realTimeReq = requests.get('https://api.liveperson.net/api/account/' + accountNumber + '/service/leDataReporting/baseURI.json?version=1.0')
+skillReadOnlyReq = requests.get('https://api.liveperson.net/api/account/' + accountNumber + '/service/accountConfigReadOnly/baseURI.json?version=1.0')
+if not realTimeReq.ok:
+	print('There was an issue with your Real Time base URI')
+if not skillReadOnlyReq.ok:
+	print('There was an issue with your skills read only base URI') 
+realTimeBaseURI = realTimeReq.json()['baseURI']
+skillReadOnlyBaseURI = skillReadOnlyReq.json()['baseURI']
+
+# Get the individual URIs for the data
+agentActivityURI = 'https://' + realTimeBaseURI +'/operations/api/account/' + accountNumber + '/agentactivity?timeframe=' + dataTimeframe + '&skillIds=all&agentIds=all&v=1'
+engActivityURI = 'https://' + realTimeBaseURI +'/operations/api/account/' + accountNumber + '/engactivity?timeframe=' + dataTimeframe + '&v=1&skillIds=all&agentIds=all'
+queueHealthURI = 'https://' + realTimeBaseURI +'/operations/api/account/' + accountNumber + '/queuehealth?timeframe=' + dataTimeframe + '&v=1&skillIds=all'
+skillURI = 'https://' + skillReadOnlyBaseURI + '/api/account/' + accountNumber + '/configuration/le-users/skills'
+
+agentActivityResults = requests.get(url=agentActivityURI, headers=postheader, auth=oauth).json()
+engActivityResults = requests.get(url=engActivityURI, headers=postheader, auth=oauth).json()
+queueHealthResults = requests.get(url=queueHealthURI, headers=postheader, auth=oauth).json()
+skillResults = requests.get(url=skillURI, headers=postheader, auth=oauth).json()
 
 # gather date and time
 myDate = datetime.date.today()
@@ -68,10 +82,9 @@ if skillIDs:
 	df_ = pandas.DataFrame(index=skillIDs, columns=["skill_name", "date", "timeframe", "timezone", "staff", "chats", "chats_answered", "abandoned", "average_speed_to_answer", "total_handling_time", "average_handling_time"])
 
 	# Match skill ID to skill name. Input the skill name in our dataframe.
-	for skillData in skillResults['Skill']:
-		for skill in skillIDs:
-			if str(skillData['id']) == skill:
-				df_.set_value(skill, "skill_name", skillData['name'])
+	for skillData in skillResults:
+		if str(skillData['id']) in skillIDs:
+			df_.set_value(str(skillData['id']), "skill_name", skillData['name'])
 
 	# Insert our date and time info into the dataframe using our start_time_epoch
 	for skill in skillIDs:
