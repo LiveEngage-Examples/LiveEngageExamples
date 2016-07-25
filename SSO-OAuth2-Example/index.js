@@ -34,62 +34,90 @@ app.get('/codeflow', function(request, response) {
   response.render('pages/codeflow');
 });
 
+// render the customer page
+app.get('/customer', function(request, response) {
+  response.render('pages/customer');
+});
+
 // used to generate the OpenID Connect Token for the implicit flow
 app.post('/getToken', function(request, response) {
 	// generate our token with the appropiate information and sign it with our private RSA key.
 	var token = jwt.sign({ 
         "iss": "https://enigmatic-shelf-93460.herokuapp.com/",
-        "sub": "4255551212",
-        "preferred_username" : "JohnDoe", 
-        "phone_number" : "+1-10-344-3765333",
+        "sub": "4255551212", //becomes customer id in Customer Info SDE
+        "preferred_username" : "JohnDoe", //becomes username in Customer Info SDE
+        "phone_number" : "+1-10-344-3765333", //becomes imei in Customer Info SDE
+        "given_name" : "Test", //becomes first part of name in Personal Info SDE
+        "family_name" : "Test2", //becomnes second part of name in Personal Info SDE
+        "email" : "email@email.com", //becomes Email adress in Peresonal Info SDE
+        "gender" : "Male", //becomes gender in Personal Info SDE 
         "lp_sdes":[
-        {
-         "type":"ctmrinfo",
-         "info":{
-             "cstatus":"cancelled",
-             "ctype":"vip",
-             "customerId":"138766AC",
-             "balance":-400.99,
-             "socialId":"11256324780",
-             "imei":"3543546543545688",
-             "userName":"user000",
-             "companySize":500,
-             "accountName":"bank corp",
-             "role":"broker",
-             "lastPaymentDate":{
-                 "day":15,
-                 "month":10,
-                 "year":2014
-             },
-             "registrationDate":{
-                 "day":23,
-                 "month":5,
-                 "year":2013
+            {
+             "type":"ctmrinfo",
+             "info":{
+                 "cstatus":"cancelled",
+                 "ctype":"vip",
+                 "customerId":"138766AC",
+                 "balance":-400.99,
+                 "socialId":"11256324780",
+                 "imei":"3543546543545688",
+                 "userName":"user000",
+                 "companySize":500,
+                 "accountName":"bank corp",
+                 "role":"broker",
+                 "lastPaymentDate":{
+                     "day":15,
+                     "month":10,
+                     "year":2014
+                 },
+                 "registrationDate":{
+                     "day":23,
+                     "month":5,
+                     "year":2013
+                 }
              }
-         }
-     }
+         },
+          {
+            "type": "personal",
+                "personal": {
+                "firstname": "John",
+                "lastname": "Doe",
+                "age": {
+                   "age": 34,
+                   "year": 1980,
+                   "month": 4,
+                   "day": 15
+               },
+                "contacts": [{
+                   "email": "myname@example.com",
+                   "phone": "+1 212-788-8877"
+               }],
+                "gender": "MALE",
+                "company": "company"
+            }
+        }
     ]
-}, cert_priv, { algorithm: 'RS256', expiresIn: '1h'});
-    console.log(token);
-    // verify that the token was generated correctly
-    jwt.verify(token, cert_pub, function(err, decoded) {
-    	// if the token didn't generate then respond with the error
-    	if(err){
-    		console.log(err);
-    		response.json({
-                "error": err,
-                "Fail": "404"
-            });
-    	}
-    	// if successful then response with the token
-    	else {
-    		console.log(decoded);
-    		response.json({
-                "decoded": decoded,
-                "token": token
-            });
-    	}
-    });
+    }, cert_priv, { algorithm: 'RS256', expiresIn: '1h'});
+        //console.log(token);
+        // verify that the token was generated correctly
+        jwt.verify(token, cert_pub, function(err, decoded) {
+        	// if the token didn't generate then respond with the error
+        	if(err){
+        		console.log(err);
+        		response.json({
+                    "error": err,
+                    "Fail": "404"
+                });
+        	}
+        	// if successful then response with the token
+        	else {
+        		//console.log(decoded);
+        		response.json({
+                    "decoded": decoded,
+                    "token": token
+                });
+        	}
+        });
 });
 
 // used to generate the OpenID Connect Token for the code flow
@@ -105,42 +133,66 @@ app.post('/token', function(request, response) {
     var password = creds[1];
     // validate that the client id and the client secret are correct
     if((username == 'clientid') && (password == 'clientsecret')) { 
-            // validate the authorization code, and if it is successful send the OpenID Connect Token, otherwise send an error.
-            if(request.body.code == "secretcode"){
+        console.log(request.body.code);
+        // validate the authorization code, and if it is successful send the OpenID Connect Token, otherwise send an error.
+        if(request.body.code == "secretcode"){
             // generate our token with the appropiate information and sign it with our private RSA key.
             var token = jwt.sign({ 
                 "iss": "https://enigmatic-shelf-93460.herokuapp.com/",
-                "sub": "4255551212",
-                "preferred_username" : "JohnDoe", 
-                "phone_number" : "+1-10-344-3765333",
+                "sub": "4255551212", //becomes customer id in Customer Info SDE
+                "preferred_username" : "JohnDoe", //becomes username in Customer Info SDE
+                "phone_number" : "+1-10-344-3765333", //becomes imei in Customer Info SDE
+                "given_name" : "Test", //becomes first part of name in Personal Info SDE
+                "family_name" : "Test2", //becomnes second part of name in Personal Info SDE
+                "email" : "email@email.com", //becomes Email adress in Peresonal Info SDE
+                "gender" : "Male", //becomes gender in Personal Info SDE 
                 "lp_sdes":[
-                {
-                 "type":"ctmrinfo",
-                 "info":{
-                     "cstatus":"cancelled",
-                     "ctype":"vip",
-                     "customerId":"138766AC",
-                     "balance":-400.99,
-                     "socialId":"11256324780",
-                     "imei":"3543546543545688",
-                     "userName":"user000",
-                     "companySize":500,
-                     "accountName":"bank corp",
-                     "role":"broker",
-                     "lastPaymentDate":{
-                         "day":15,
-                         "month":10,
-                         "year":2014
-                     },
-                     "registrationDate":{
-                         "day":23,
-                         "month":5,
-                         "year":2013
+                    {
+                     "type":"ctmrinfo",
+                     "info":{
+                         "cstatus":"cancelled",
+                         "ctype":"vip",
+                         "customerId":"138766AC",
+                         "balance":-400.99,
+                         "socialId":"11256324780",
+                         "imei":"3543546543545688",
+                         "userName":"user000",
+                         "companySize":500,
+                         "accountName":"bank corp",
+                         "role":"broker",
+                         "lastPaymentDate":{
+                             "day":15,
+                             "month":10,
+                             "year":2014
+                         },
+                         "registrationDate":{
+                             "day":23,
+                             "month":5,
+                             "year":2013
+                         }
                      }
-                 }
-             }
+                 },
+                  {
+                    "type": "personal",
+                        "personal": {
+                        "firstname": "John",
+                        "lastname": "Doe",
+                        "age": {
+                           "age": 34,
+                           "year": 1980,
+                           "month": 4,
+                           "day": 15
+                       },
+                        "contacts": [{
+                           "email": "myname@example.com",
+                           "phone": "+1 212-788-8877"
+                       }],
+                        "gender": "MALE",
+                        "company": "company"
+                    }
+                }
             ]
-        }, cert_priv, { algorithm: 'RS256', expiresIn: '1h'});
+            }, cert_priv, { algorithm: 'RS256', expiresIn: '1h'});
             // verify that the token was generated correctly
             jwt.verify(token, cert_pub, function(err, decoded) {
                 // if the token didn't generate then respond with the error
