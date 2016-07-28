@@ -100,7 +100,7 @@ This widget uses the CollapsibleLists JS library.
 You can view a live example here:[Tiered Responses Widget](https://tiered-responses-widget.herokuapp.com/index.html)
 
 ### Contribution 
-Thank you Josh Espinosa for creating this widget example.
+Thank you [Josh Espinosa](https://github.com/Hauuguu) for creating this widget example.
 
 # Translate Widget
 This is an example widget of how you can have the chat lines translated to another language. The widget uses the Bing translator widget to translate the lines. 
