@@ -18,7 +18,7 @@ authorizeURL <- 'null'
 app <- oauth_app('LP',key,secret)
 
 sig <- sign_oauth1.0(app,
-                     token="{YOUR API SECRET}",
+                     token="{YOUR TOKEN}",
                      token_secret="{YOUR TOKEN SECRET}"
 )
 
