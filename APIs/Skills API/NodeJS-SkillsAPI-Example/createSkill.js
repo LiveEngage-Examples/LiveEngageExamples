@@ -22,7 +22,7 @@ var oauth = {
         token_secret: 'your access token secret'
     };
 
-// Get a list of all the skills
+// URL to create skills
 // Example URL: https://va-a.ac.liveperson.net/api/account/56072331/configuration/le-users/skills?v=1
 var url = 'https://{YOUR BASE URI}/api/account/{YOUR ACCOUNT NUMBER}/configuration/le-users/skills?v=1';
 // Example body for creating a skill
