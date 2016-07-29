@@ -20,7 +20,7 @@ This folder contains examples for connecting to the Real Time Operational API. C
 
 # Skills API 
 
-This folder contains examples for connecting to the Skills API. Curerntly there are examples in: Python 3.5 and NodeJS. You can find more information about these examples in the README.md file inside this folder.
+This folder contains examples for connecting to the Skills API. Curerntly there are examples in: Python 3.5, NodeJS, Java, and R. You can find more information about these examples in the README.md file inside this folder.
 
 # Users API 
 
