@@ -23,8 +23,8 @@ sig <- sign_oauth1.0(app,
                      token_secret="{YOUR TOKEN SECRET}"
 )
 
-# Example URL: https://va-a.ac.liveperson.net/api/account/56072331/configuration/le-users/skills?v=1
-getRequest <- GET("https://{YOUR BASE URI}/api/account/{YOUR ACCOUNT NUMBER}/configuration/le-users/skills?v=1",sig,add_headers("Content-Type"="application/json"))
+# Example URL: https://va-a.ac.liveperson.net/api/account/56072331/configuration/le-users/skills/2?v=1
+getRequest <- GET("https://{YOUR BASE URI}/api/account/{YOUR ACCOUNT NUMBER}/configuration/le-users/skills/{SKILL ID}?v=1",sig,add_headers("Content-Type"="application/json"))
 content(getRequest, "parsed")
 skillList <- content(getRequest,"parsed")
 skillList
