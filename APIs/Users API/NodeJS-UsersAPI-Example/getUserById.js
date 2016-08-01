@@ -24,20 +24,6 @@ var oauth = {
         token_secret: 'your access token secret'
     };
 
-// Get a list of all the users
-// Example URL: https://va-a.ac.liveperson.net/api/account/56072331/configuration/le-users/users?v=1
-var url = 'https://{YOUR BASE URI}/api/account/{YOUR ACCOUNT NUMBER}/configuration/le-users/users?v=1';
-request.get({
-    url: url,
-    oauth: oauth,
-    json: true,
-    headers: {
-        'Content-Type': 'application/json'
-    }
-}, function (e, r, b) {
-    console.log(JSON.stringify(b));
-});
-
 // Get all of the information for a single user
 // Example URL: https://va-a.ac.liveperson.net/api/account/56072331/configuration/le-users/users/597110910?v=1
 url = 'https://{YOUR BASE URI}/api/account/{YOUR ACCOUNT NUMBER}/configuration/le-users/users/{USER ID}?v=1';
