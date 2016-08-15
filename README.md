@@ -15,5 +15,6 @@ Thank you to following people who helped provide examples for this repository:
  * Python - External Engagements API Example
 * [David Eleff](https://github.com/deleff)
  * Java - Skills API Example
+ * Java - Users API Example
 * [Josh Espinosa](https://github.com/Hauuguu)
  * Tiered Responses Widget 
