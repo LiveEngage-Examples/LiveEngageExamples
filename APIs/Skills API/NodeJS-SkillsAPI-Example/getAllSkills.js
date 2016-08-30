@@ -35,7 +35,7 @@ request.get({
         'Content-Type': 'application/json'
     }
 }, function (e, r, b) {
-    if (!e && r.statusCode == 201) {
+    if (!e && r.statusCode == 200) {
         console.log(JSON.stringify(b));
     }
     else {
