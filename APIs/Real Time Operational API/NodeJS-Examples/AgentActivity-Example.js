@@ -1,5 +1,5 @@
 /*
- Web call needed to discover baseURI needed to call Users API for individual LiveEngage accounts for Accounts:
+ Web call needed to discover baseURI needed to call Real Time Operational API for individual LiveEngage accounts for Accounts:
  https://api.liveperson.net/api/account/{YOUR ACCOUNT NUMBER}/service/leDataReporting/baseURI.json?version=1.0
  Expected response example:
 {
