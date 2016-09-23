@@ -25,7 +25,7 @@ var oauth = {
 
 // Query the API
 // Example URL: https://va-a.data.liveperson.net/operations/api/account/56072331/msgconversation?timeframe=1440&v=1
-var url = 'https://{YOUR BASE URI}/api/account/{YOUR ACCOUNT NUMBER}/msgcsatdistribution?timeframe=1440&v=1';
+var url = 'https://{YOUR BASE URI}/api/account/{YOUR ACCOUNT NUMBER}/msgconversation?timeframe=1440&v=1';
 
 request.get({
     url: url,
