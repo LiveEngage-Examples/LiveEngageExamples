@@ -15,6 +15,7 @@ This folder contains examples for connecting to the External Engagements API. Cu
 This is a basic example of how to connect to the Engagement History API in Java by using Scribe. In order to run the example you will need to update the EngagementHistory.java file with your Engagement History API credentials.
 
 In order to use the Scribe classes, you will need to add this Maven Dependency to your POM file:
+
 <dependency>
   <groupId>org.scribe</groupId>
   <artifactId>scribe</artifactId>
