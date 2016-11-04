@@ -16,7 +16,13 @@ This is a basic example of how to connect to the Engagement History API in Java 
 
 In order to use the Scribe classes, you will need to add this Maven Dependency to your POM file:
 
-"<dependency><groupId>org.scribe</groupId><artifactId>scribe</artifactId><version>1.3.7</version></dependency>"
+```xml
+<dependency>
+	<groupId>org.scribe</groupId>
+	<artifactId>scribe</artifactId>
+	<version>1.3.7</version>
+</dependency>
+```
 
 # Real Time Operational API 
 
