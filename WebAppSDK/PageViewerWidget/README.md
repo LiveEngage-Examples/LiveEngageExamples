@@ -23,4 +23,7 @@ Currently the tooltip on the copy button has a slight bug where it might not app
 
 ## Author
 Joshua Espinosa
+
 Email: jespinosa@liveperson.com
+
+Github: https://github.com/Hauuguu
