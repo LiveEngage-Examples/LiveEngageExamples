@@ -81,6 +81,16 @@ To use the widget, you will need to update the example3.js file with your Google
 
 You can view a live example here:[Multi-Media Widget](https://scottwestover.herokuapp.com/liveengageWidgets/MultiMediaWidget/)
 
+# Page Viewer Widget
+This is an example widget that was created for a client that shows how you can simulate a page viewer in LiveEngage. While we have the "Page Navigation" built into the agent workspace in LiveEngage, it does not give a visual view of what the customer is seeing. This simple widget allows a visual understanding of where your customers are on your website all in one window.
+
+Note: This does NOT operate the same way as co-browse. You will not be able to see exactly what the visitor is doing.
+
+You can view a live example here:[Page Viewer Widget](https://le-page-viewer.herokuapp.com/index.html)
+
+### Contribution
+Thank you Josh Espinosa for creating this widget example.
+
 # Photo Sharing Widget
 This is an example of widget of how you can use the Web App SDK to send Images through chat, and how you can allow visitors to upload photos and have the agents view them. The widget allows for you to send a form to the visitor to allow them to upload the image, and once the photo is uploaded the widget will display the image. This widget was built using the Google Drive API.
 

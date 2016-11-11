@@ -19,4 +19,5 @@ Thank you to following people who helped provide examples for this repository:
 * [Josh Espinosa](https://github.com/Hauuguu)
  * [SDK - Tiered Responses Widget](https://github.com/scottwestover/LiveEngageExamples/tree/master/WebAppSDK/TieredResponsesWidget)
  * [SDK - Marketo Example Widget 3](https://github.com/scottwestover/LiveEngageExamples/tree/master/WebAppSDK/MarketoExampleWidget3)
+ * [SDK - Page Viewer Widget](https://github.com/scottwestover/LiveEngageExamples/tree/master/WebAppSDK/PageViewerWidget)
  * [NodeJS - External Engagement API Example](https://github.com/LiveEngage-Examples/LiveEngage-External-Engagements-API/tree/master/Node-ExternalEngagementsAPISample)
