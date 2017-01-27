@@ -5,6 +5,42 @@
     <script type="text/javascript" src="js/CollapsibleLists.js"></script>
     <script type="text/javascript" charset="utf8" src="https://lpcdn.lpsnmedia.net/webagent/client-SDK.min.js"></script>
     <style>
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 300px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            top: 150%;
+            left: 50%;
+            margin-left: -60px;
+            /* Fade in tooltip - takes 1 second to go from 0% to 100% opac: */
+            opacity: 0;
+            transition: opacity 1.5s;
+            padding: 5px;
+        }
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent transparent black transparent;
+        }
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
         body {
             font-family: "Myriad pro", "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
             font-size: 13px;
@@ -38,15 +74,15 @@
             cursor: pointer;
             color: #515254;
         }
-        div.searchResp {
+        li.response {
             padding: 5px 0px 5px 10px;
             border-top: 1px solid rgba(193, 194, 195, .4);
         }
-        div.searchSub {
+        li.subcategory {
             padding: 5px 0px 5px 10px;
             border-top: 1px solid rgba(193, 194, 195, .7);
         }
-        div.searchCat {
+        li.category {
             padding: 5px 0px 5px 10px;
             border-top: 1px solid rgba(193, 194, 195, 1);
         }
@@ -110,6 +146,9 @@
             background: url('img/16x16-sprite.png') -400px 0 no-repeat;
             opacity: .85;
         }
+        .searchCat,.searchSub,.searchResp{
+            display:inline-block !important;
+        }
       </style>
 </head>
 <body>
@@ -119,198 +158,7 @@
             <div class="lpview_clear_search_icon clear_search_icon"></div>
             <input type="text" class="lpview_search_input search_input"></div>
     </div>
-    <!--Paste Code Below This Line -->
-    <ul id='list' class='collapsibleList'>
-        <li class='titles category' id='catTitles'>
-            <div class='searchCat' id='searchableText'>Promotions</div>
-            <ul>
-                <li class='titles subcategory' id='subTitles'>
-                    <div class='searchSub' id='searchableText'>Weekly</div>
-                    <ul>
-                        <li class='titles response' id='respTitles'>
-                            <div class='searchResp' id='searchableText'>
-                                Buy 2 Get 1
-                                <div class='item'>
-                                    Have you heard of our Buy 2, Get 1 promotion, valid this week?
-                                </div>
-                            </div>
-                        </li>
-                        <li class='titles response' id='respTitles'>
-                            <div class='searchResp' id='searchableText'>
-                                Free Shipping
-                                <div class='item'>We have a Free Shipping offer until Sunday, code ABCD</div>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
-                <li class='titles subcategory' id='subTitles'>
-                    <div class='searchSub' id='searchableText'>Monthly</div>
-                    <ul>
-                        <li class='titles response' id='respTitles'>
-                            <div class='searchResp' id='searchableText'>
-                                Promo Code
-                                <div class='item'>
-                                    Until the end of the month, you get a free $10 credit to your next purchase, code: FREE10
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
-                <li class='titles subcategory' id='subTitles'>
-                    <div class='searchSub' id='searchableText'>Social</div>
-                    <ul>
-                        <li class='titles response' id='respTitles'>
-                            <div class='searchResp' id='searchableText'>
-                                Facebook
-                                <div class='item'>
-                                    Like us on
-                                    <a href="https://www.facebook.com/LivePersonInc/" target="_blank">Facebook</a>
-                                    , and get 5% off your next order
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-        <li class='titles category' id='catTitles'>
-            <div class='searchCat' id='searchableText'>Products</div>
-            <ul>
-                <li class='titles subcategory' id='subTitles'>
-                    <div class='searchSub' id='searchableText'>Hot Phones</div>
-                    <ul>
-                        <li class='titles response' id='respTitles'>
-                            <div class='searchResp' id='searchableText'>
-                                Samsung Phone
-                                <div class='item'>Here is our latest Samsung Phone:</div>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-        <li class='titles category' id='catTitles'>
-            <div class='searchCat' id='searchableText'>T&C</div>
-            <ul>
-                <li class='titles response' id='respTitles'>
-                    <div class='searchResp' id='searchableText'>
-                        Short Version
-                        <div class='item'>
-                            Please review our policies
-                            <a href="http://www.liveperson.com/" target="_blank">here.</a>
-                        </div>
-                    </div>
-                </li>
-                <li class='titles response' id='respTitles'>
-                    <div class='searchResp' id='searchableText'>
-                        Long Version
-                        <div class='item'>
-                            There has never been an effective and unbiased method to measure the relationship between brands and consumers. Until now... Today's current metrics: net promoter score (NPS), customer satisfaction (CSAT), and customer effort score (CES), all rely on customer surveys. But these methods have many issues. Surveys disrupt the customer journey. This means, those who actually take the time to respond are usually your happiest customers, which skews your results. Using a select group to represent an entire customer pool also leads to grossly inaccurate information, since respondents opinions might be inconsistent with the broader population. But all that's changed.
-                        </div>
-                    </div>
-                </li>
-            </ul>
-        </li>
-        <li class='titles category' id='catTitles'>
-            <div class='searchCat' id='searchableText'>Agent Suggested Content (Approved)</div>
-            <ul>
-                <li class='titles subcategory' id='subTitles'>
-                    <div class='searchSub' id='searchableText'>Greeting</div>
-                    <ul>
-                        <li class='titles response' id='respTitles'>
-                            <div class='searchResp' id='searchableText'>
-                                General
-                                <div class='item'>Welcome to our company! We're always happy to help :)</div>
-                            </div>
-                        </li>
-                        <li class='titles response' id='respTitles'>
-                            <div class='searchResp' id='searchableText'>
-                                Greeting
-                                <div class='item'>
-                                    Welcome I'll be your helper today and my name is $!{operator.nickname}! How may assist you?
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-        <li class='titles category' id='catTitles'>
-            <div class='searchCat' id='searchableText'>Technical Support</div>
-            <ul>
-                <li class='titles subcategory' id='subTitles'>
-                    <div class='searchSub' id='searchableText'>Client can't connect</div>
-                    <ul>
-                        <li class='titles subcategory' id='subTitles'>
-                            <div class='searchSub' id='searchableText'>Software Issues</div>
-                            <ul>
-                                <li class='titles subcategory' id='subTitles'>
-                                    <div class='searchSub' id='searchableText'>Network setup</div>
-                                    <ul>
-                                        <li class='titles subcategory' id='subTitles'>
-                                            <div class='searchSub' id='searchableText'>IP Address Setup</div>
-                                            <ul>
-                                                <li class='titles response' id='respTitles'>
-                                                    <div class='searchResp' id='searchableText'>
-                                                        Verify IP
-                                                        <div class='item'>
-                                                            Please verify that you are receiving the correct IP Address from the DHCP server. Let's go ahead and open command prompt and then typing "ipconfig" without quotes and then hitting enter.
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class='titles subcategory' id='subTitles'>
-                            <div class='searchSub' id='searchableText'>Hardware issues</div>
-                            <ul>
-                                <li class='titles subcategory' id='subTitles'>
-                                    <div class='searchSub' id='searchableText'>Server Room</div>
-                                    <ul>
-                                        <li class='titles subcategory' id='subTitles'>
-                                            <div class='searchSub' id='searchableText'>Ports</div>
-                                            <ul>
-                                                <li class='titles response' id='respTitles'>
-                                                    <div class='searchResp' id='searchableText'>
-                                                        Verify Port
-                                                        <div class='item'>
-                                                            Please verify that you are isolating the correct port by using a tone generator. This will help us identify it it's a problem with the port or your computer.
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class='titles subcategory' id='subTitles'>
-                                    <div class='searchSub' id='searchableText'>Computer Issues</div>
-                                    <ul>
-                                        <li class='titles subcategory' id='subTitles'>
-                                            <div class='searchSub' id='searchableText'>Ethernet</div>
-                                            <ul>
-                                                <li class='titles response' id='respTitles'>
-                                                    <div class='searchResp' id='searchableText'>
-                                                        Verify Cable
-                                                        <div class='item'>
-                                                            Please verify that the ethernet is hooked up properly to your computer. There should be a data link light visible when connected.
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </li>
-    </ul>
-    <!--Paste Code Above This Line -->
+    <!--Paste Code Below This Line --><ul id='list' class='collapsibleList'><li class='titles category' id='catTitles'><div class='searchCat' id='searchableText'>Promotions</div><ul><li class='titles subcategory' id='subTitles'><div class='searchSub' id='searchableText'>Weekly</div><ul><li class='titles response' id='respTitles'><div class='searchResp tooltip' id='searchableText'>Buy 2 Get 1<div class='item tooltiptext'>Have you heard of our Buy 2, Get 1 promotion, valid this week?</div></div></li><li class='titles response' id='respTitles'><div class='searchResp tooltip' id='searchableText'>Free Shipping<div class='item tooltiptext'>We have a Free Shipping offer until Sunday, code ABCD</div></div></li></ul></li><li class='titles subcategory' id='subTitles'><div class='searchSub' id='searchableText'>Monthly</div><ul><li class='titles response' id='respTitles'><div class='searchResp tooltip' id='searchableText'>Promo Code<div class='item tooltiptext'>Until the end of the month, you get a free $10 credit to your next purchase, code: FREE10</div></div></li></ul></li><li class='titles subcategory' id='subTitles'><div class='searchSub' id='searchableText'>Social</div><ul><li class='titles response' id='respTitles'><div class='searchResp tooltip' id='searchableText'>Facebook<div class='item tooltiptext'>Like us on <a href="https://www.facebook.com/LivePersonInc/" target="_blank">Facebook</a>, and get 5% off your next order</div></div></li></ul></li></ul></li><li class='titles category' id='catTitles'><div class='searchCat' id='searchableText'>Products</div><ul><li class='titles subcategory' id='subTitles'><div class='searchSub' id='searchableText'>Hot Phones</div><ul><li class='titles response' id='respTitles'><div class='searchResp tooltip' id='searchableText'>Samsung Phone<div class='item tooltiptext'>Here is our latest Samsung Phone:</div></div></li></ul></li></ul></li><li class='titles category' id='catTitles'><div class='searchCat' id='searchableText'>T&C</div><ul><li class='titles response' id='respTitles'><div class='searchResp tooltip' id='searchableText'>Short Version<div class='item tooltiptext'>Please review our policies <a href="http://www.liveperson.com/" target="_blank">here.</a></div></div></li><li class='titles response' id='respTitles'><div class='searchResp tooltip' id='searchableText'>Long Version<div class='item tooltiptext'>There has never been an effective and unbiased method to measure the relationship between brands and consumers. Until now... Today's current metrics: net promoter score (NPS), customer satisfaction (CSAT), and customer effort score (CES), all rely on customer surveys. But these methods have many issues. Surveys disrupt the customer journey. This means, those who actually take the time to respond are usually your happiest customers, which skews your results. Using a select group to represent an entire customer pool also leads to grossly inaccurate information, since respondents opinions might be inconsistent with the broader population. But all that's changed.</div></div></li></ul></li><li class='titles category' id='catTitles'><div class='searchCat' id='searchableText'>Agent Suggested Content (Approved)</div><ul><li class='titles subcategory' id='subTitles'><div class='searchSub' id='searchableText'>Greeting</div><ul><li class='titles response' id='respTitles'><div class='searchResp tooltip' id='searchableText'>General<div class='item tooltiptext'>Welcome to our company! We're always happy to help :)</div></div></li><li class='titles response' id='respTitles'><div class='searchResp tooltip' id='searchableText'>Greeting<div class='item tooltiptext'>Welcome I'll be your helper today and my name is $!{operator.nickname}! How may assist you?</div></div></li></ul></li></ul></li><li class='titles category' id='catTitles'><div class='searchCat' id='searchableText'>Technical Support</div><ul><li class='titles subcategory' id='subTitles'><div class='searchSub' id='searchableText'>Client can't connect</div><ul><li class='titles subcategory' id='subTitles'><div class='searchSub' id='searchableText'>Software Issues</div><ul><li class='titles subcategory' id='subTitles'><div class='searchSub' id='searchableText'>Network setup</div><ul><li class='titles subcategory' id='subTitles'><div class='searchSub' id='searchableText'>IP Address Setup</div><ul><li class='titles response' id='respTitles'><div class='searchResp tooltip' id='searchableText'>Verify IP<div class='item tooltiptext'>Please verify that you are receiving the correct IP Address from the DHCP server. Let's go ahead and open command prompt and then typing "ipconfig" without quotes and then hitting enter.</div></div></li></ul></li></ul></li></ul></li><li class='titles subcategory' id='subTitles'><div class='searchSub' id='searchableText'>Hardware issues</div><ul><li class='titles subcategory' id='subTitles'><div class='searchSub' id='searchableText'>Server Room</div><ul><li class='titles subcategory' id='subTitles'><div class='searchSub' id='searchableText'>Ports</div><ul><li class='titles response' id='respTitles'><div class='searchResp tooltip' id='searchableText'>Verify Port<div class='item tooltiptext'>Please verify that you are isolating the correct port by using a tone generator. This will help us identify it it's a problem with the port or your computer.</div></div></li></ul></li></ul></li><li class='titles subcategory' id='subTitles'><div class='searchSub' id='searchableText'>Computer Issues</div><ul><li class='titles subcategory' id='subTitles'><div class='searchSub' id='searchableText'>Ethernet</div><ul><li class='titles response' id='respTitles'><div class='searchResp tooltip' id='searchableText'>Verify Cable<div class='item tooltiptext'>Please verify that the ethernet is hooked up properly to your computer. There should be a data link light visible when connected.</div></div></li></ul></li></ul></li></ul></li></ul></li></ul></li></ul><!--Paste Code Above This Line -->
     <script>
          var SDK = lpTag.agentSDK;
         SDK.init();
