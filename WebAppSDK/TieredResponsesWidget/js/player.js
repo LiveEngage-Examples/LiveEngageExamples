@@ -200,6 +200,42 @@ function parseToHtml(obj){
     <script type="text/javascript" src="js/CollapsibleLists.js"></script>
     <script type="text/javascript" charset="utf8" src="https://lpcdn.lpsnmedia.net/webagent/client-SDK.min.js"></script>
     <style>
+        .tooltip {
+            position: relative;
+            display: inline-block;
+        }
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 300px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px 0;
+            position: absolute;
+            z-index: 1;
+            top: 150%;
+            left: 50%;
+            margin-left: -60px;
+            /* Fade in tooltip - takes 1 second to go from 0% to 100% opac: */
+            opacity: 0;
+            transition: opacity 1.5s;
+            padding: 5px;
+        }
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: transparent transparent black transparent;
+        }
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
         body {
             font-family: "Myriad pro", "Trebuchet MS", "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", sans-serif;
             font-size: 13px;
@@ -233,15 +269,15 @@ function parseToHtml(obj){
             cursor: pointer;
             color: #515254;
         }
-        div.searchResp {
+        li.response {
             padding: 5px 0px 5px 10px;
             border-top: 1px solid rgba(193, 194, 195, .4);
         }
-        div.searchSub {
+        li.subcategory {
             padding: 5px 0px 5px 10px;
             border-top: 1px solid rgba(193, 194, 195, .7);
         }
-        div.searchCat {
+        li.category {
             padding: 5px 0px 5px 10px;
             border-top: 1px solid rgba(193, 194, 195, 1);
         }
@@ -304,6 +340,9 @@ function parseToHtml(obj){
             width: 16px;
             background: url('img/16x16-sprite.png') -400px 0 no-repeat;
             opacity: .85;
+        }
+        .searchCat,.searchSub,.searchResp{
+            display:inline-block !important;
         }
       </style>
 </head>
@@ -372,7 +411,7 @@ function parseToHtml(obj){
             for(var j = 1; j < length; j++){
 
                 if(obj[i][j] != ""){  //Hop over empty fields
-                    parsedHtml += "<li class='titles response' id='respTitles'><div class='searchResp' id='searchableText'>"+obj[i][j]+"<div class='item'>"+obj[i][responseNum]+"</div></div></li>";
+                    parsedHtml += "<li class='titles response' id='respTitles'><div class='searchResp tooltip' id='searchableText'>"+obj[i][j]+"<div class='item tooltiptext'>"+obj[i][responseNum]+"</div></div></li>";
                     break;
                 }
                 
